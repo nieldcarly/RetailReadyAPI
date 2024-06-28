@@ -6,7 +6,7 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
-node_modules/
-.env
-build/
-*.log
+/node_modules/
+/.env
+/build/
+/*.log

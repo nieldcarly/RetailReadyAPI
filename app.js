@@ -10,18 +10,14 @@ app.use(express.json()); // Middleware to parse JSON bodies
 const userRoutes = require('./routes/users');
 const brandRoutes = require('./routes/brands');
 const retailerRoutes = require('./routes/retailers');
+const routingGuideRoutes = require('./routes/routing-guides');
 
+// TODO: Implement auth
 // Use route modules with appropriate paths
 app.use('/users', userRoutes);
 app.use('/brands', brandRoutes);
 app.use('/retailers', retailerRoutes);
-
-// Example of defining more routes
-// const orderRoutes = require('./routes/orders');
-// const guideRoutes = require('./routes/guides');
-//
-// app.use('/orders', orderRoutes);
-// app.use('/guides', guideRoutes);
+app.use('/routingGuides', routingGuideRoutes);
 
 // Sync models with the database
 sequelize.sync().then(() => {
@@ -32,7 +28,7 @@ sequelize.sync().then(() => {
 
 // Root route
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Retail Ready!');
 });
 
 // Start the server

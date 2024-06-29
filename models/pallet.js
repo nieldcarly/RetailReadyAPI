@@ -1,32 +1,32 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('./index');
 
-const Order = sequelize.define('Order', {
-    order_id: {
+const Pallet = sequelize.define('Pallet', {
+    pallet_id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
 });
 
-Order.associate = (models) => {
-    Order.belongsTo(models.Retailer, {
+Pallet.associate = (models) => {
+    Pallet.belongsTo(models.Order, {
         foreignKey: {
-            name:'retailer_id',
+            name: 'order_id',
             allowNull: false,
         },
-        as: 'retailer',
+        as: 'order',
     });
 };
 
-Order.associate = (models) => {
-    Order.belongsTo(models.Brand, {
+Pallet.associate = (models) => {
+    Pallet.hasMany(models.Carton, {
         foreignKey: {
-            name:'brand_id',
+            name: 'pallet_id',
             allowNull: false,
         },
-        as: 'brand',
+        as: 'pallet',
     });
 };
 
-module.exports = Order;
+module.exports = Pallet;

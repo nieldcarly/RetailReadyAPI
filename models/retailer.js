@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('./index');
 
 const Retailer = sequelize.define('Retailer', {
-    id: {
+    retailer_id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
@@ -12,5 +12,16 @@ const Retailer = sequelize.define('Retailer', {
         allowNull: false,
     },
 });
+
+Retailer.associate = (models) => {
+    Retailer.hasMany(models.User, {
+        foreignKey: {
+            name:'retailer_id',
+            allowNull: true
+        },
+        as: 'retailer',
+    });
+};
+
 
 module.exports = Retailer;

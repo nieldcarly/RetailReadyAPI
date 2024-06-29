@@ -17,7 +17,7 @@ const routingGuideRoutes = require('./routes/routing-guides');
 app.use('/users', userRoutes);
 app.use('/brands', brandRoutes);
 app.use('/retailers', retailerRoutes);
-app.use('/routingGuides', routingGuideRoutes);
+app.use('/routing-guides', routingGuideRoutes);
 
 // Sync models with the database
 sequelize.sync().then(() => {
